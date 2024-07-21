@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>小园香径</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="博客 前端开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小园香径">
+<meta property="og:url" content="https://bzw875.github.io/index.html">
+<meta property="og:site_name" content="小园香径">
+<meta property="og:description" content="博客 前端开发">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="小园香径">
+<meta property="article:tag" content="ES6 node.js http 计算机">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="小园香径" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小园香径</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">小园香径 博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://bzw875.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-int-to-binary" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/25/int-to-binary/" class="article-date">
+  <time class="dt-published" datetime="2023-11-25T13:30:28.405Z" itemprop="datePublished">2023-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/25/int-to-binary/">js实现整数转二进制原码、补码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>为了加强对原码，反码，补码的理解，写了一个js函数整型转原码二进制的函数，同时支持反码和补码</p>
+<ul>
+<li>原码就是符号位加上真值的绝对值</li>
+<li>反码是正数的反码是其本身；负数的反码是在其原码的基础上，符号位不变，其余各个位取反</li>
+<li>补码是正数的补码就是其本身；负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后+1。(也即在反码的基础上+1)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">int_to_binary</span> = (<span class="params">num, size, type</span>) =&gt; &#123;</span><br><span class="line">    size = size || <span class="number">64</span>; <span class="comment">// 大小默认64位</span></span><br><span class="line">    type = type || <span class="number">0</span>; <span class="comment">// 0 原码、1 反码、2 补码</span></span><br><span class="line">    <span class="keyword">const</span> negative = num &lt; <span class="number">0</span>; <span class="comment">// 符号</span></span><br><span class="line">    <span class="keyword">const</span> reverseAndNegative = type === <span class="number">1</span> &amp;&amp; negative;</span><br><span class="line">    <span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="title class_">Array</span>(size).<span class="title function_">fill</span>(reverseAndNegative ? <span class="string">&#x27;1&#x27;</span> : <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> cur = <span class="title class_">Math</span>.<span class="title function_">abs</span>(num);</span><br><span class="line">    <span class="keyword">if</span> (type === <span class="number">2</span> &amp;&amp; negative) &#123;</span><br><span class="line">        cur += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> j = size - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> remainder = cur % <span class="number">2</span>;</span><br><span class="line">        cur = (cur - remainder) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (reverseAndNegative) &#123;</span><br><span class="line">            arr[j] = remainder === <span class="number">0</span> ? <span class="string">&#x27;1&#x27;</span> : <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            arr[j] = remainder;</span><br><span class="line">        &#125;</span><br><span class="line">        j--;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="string">&#x27;overflow&#x27;</span></span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    arr[<span class="number">0</span>] = negative ? <span class="string">&#x27;1&#x27;</span> : <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> arr.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">int_to_binary</span>( <span class="number">123</span>, <span class="number">16</span>, <span class="number">0</span>)) <span class="comment">// 00000000000000000000010011010010</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">int_to_binary</span>(-<span class="number">123</span>, <span class="number">16</span>, <span class="number">0</span>)) <span class="comment">// 10000000000000000000010011010010</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">int_to_binary</span>( <span class="number">123</span>, <span class="number">16</span>, <span class="number">1</span>)) <span class="comment">// 01111111111111111111101100101101</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">int_to_binary</span>(-<span class="number">123</span>, <span class="number">16</span>, <span class="number">1</span>)) <span class="comment">// 11111111111111111111101100101101</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">int_to_binary</span>( <span class="number">123</span>, <span class="number">16</span>, <span class="number">2</span>)) <span class="comment">// 00000000000000000000010011010010</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">int_to_binary</span>(-<span class="number">123</span>, <span class="number">16</span>, <span class="number">2</span>)) <span class="comment">// 10000000000000000000010011010011</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://bzw875.github.io/2023/11/25/int-to-binary/" data-id="clyv6u0w2000afm5y4mwr9nyu" data-title="js实现整数转二进制原码、补码" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/25/int-to-binary/">js实现整数转二进制原码、补码</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/15/javascript-tutorial/">javascript简单教程</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/15/readed-book/">读过的书</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/15/use-forever/">使用forever来持久运行node.js应用</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/15/website-unuse/">网站打不开的问题排查经验</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 小园香径<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
