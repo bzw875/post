@@ -4,15 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>小园香径</title>
+  <title>网站打不开的问题排查经验 | 小园香径</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="博客 前端开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小园香径">
-<meta property="og:url" content="https://bzw875.github.io/page/2/index.html">
+  <meta name="description" content="自从vps到期之后网站就打不开，正常启动，但是本地就是访问不了。 排查ping 得通不，是不是不幸被墙了服务启动正常吗使用ip访问看看，是不是域名解析问题查看服务监听的是哪个端口是不是vps关闭了80端口 结果是vps关闭了80端口，接下要做的是就是打开80端口了。但是不要关闭防火墙功能，这样不推荐。 打开80端口方法一、编辑 etc&#x2F;sysconfig&#x2F;iptables文件 vi etc&#x2F;sys">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网站打不开的问题排查经验">
+<meta property="og:url" content="https://bzw875.github.io/2023/11/15/website-unuse/index.html">
 <meta property="og:site_name" content="小园香径">
-<meta property="og:description" content="博客 前端开发">
+<meta property="og:description" content="自从vps到期之后网站就打不开，正常启动，但是本地就是访问不了。 排查ping 得通不，是不是不幸被墙了服务启动正常吗使用ip访问看看，是不是域名解析问题查看服务监听的是哪个端口是不是vps关闭了80端口 结果是vps关闭了80端口，接下要做的是就是打开80端口了。但是不要关闭防火墙功能，这样不推荐。 打开80端口方法一、编辑 etc&#x2F;sysconfig&#x2F;iptables文件 vi etc&#x2F;sys">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-15T13:21:43.527Z">
+<meta property="article:modified_time" content="2023-11-15T13:21:43.527Z">
 <meta property="article:author" content="小园香径">
 <meta property="article:tag" content="ES6 node.js http 计算机">
 <meta name="twitter:card" content="summary">
@@ -78,42 +80,76 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-KMP-string-matching-algorithm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-website-unuse" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/11/23/KMP-string-matching-algorithm/" class="article-date">
-  <time class="dt-published" datetime="2023-11-22T23:52:25.352Z" itemprop="datePublished">2023-11-23</time>
+    <a href="/2023/11/15/website-unuse/" class="article-date">
+  <time class="dt-published" datetime="2023-11-15T13:21:43.527Z" itemprop="datePublished">2023-11-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      网站打不开的问题排查经验
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>自从vps到期之后网站就打不开，正常启动，但是本地就是访问不了。</p>
+<h2 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h2><p>ping 得通不，是不是不幸被墙了<br>服务启动正常吗<br>使用ip访问看看，是不是域名解析问题<br>查看服务监听的是哪个端口<br>是不是vps关闭了80端口</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>是vps关闭了80端口，接下要做的是就是打开80端口了。但是不要关闭防火墙功能，这样不推荐。</p>
+<h2 id="打开80端口"><a href="#打开80端口" class="headerlink" title="打开80端口"></a>打开80端口</h2><p>方法一、编辑 <code>etc/sysconfig/iptables</code>文件</p>
+<p><code>vi etc/sysconfig/iptables</code></p>
+<p>在最后面新加一行</p>
+<p><code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT</code></p>
+<p>重启 iptables 服务</p>
+<p><code>service iptables restart</code></p>
+<p>方法二、iptables 配置规则</p>
+<p><code>ptables -I INPUT -p tcp --dport 3030 -j ACCEPT</code></p>
+<p><code>service iptables save</code></p>
+<p>重启 iptables 服务</p>
+<p><code>service iptables restart</code></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://bzw875.github.io/2023/11/23/KMP-string-matching-algorithm/" data-id="clyv5hhh30000ox5ya1mjbb5b" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://bzw875.github.io/2023/11/15/website-unuse/" data-id="clozsscja000ckps391vy1he4" data-title="网站打不开的问题排查经验" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/15/websocket/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          WebSocket协议介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/11/15/readed-book/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">读过的书</div>
+    </a>
+  
+</nav>
 
   
+</article>
 
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
-  </nav>
 
 </section>
         
