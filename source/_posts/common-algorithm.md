@@ -228,7 +228,9 @@ console.log(addStr('123454321', '456'))
 ## 八皇后问题
 
 八皇后问题，是一个古老而著名的问题，是 回溯算法 的典型案例。
+
 该问题是国际西洋棋棋手马克斯·贝瑟尔于 1848 年提出：在 8×8 格的国际象棋上摆放八个皇后，使其不能互相攻击，即：任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。
+
 使用回溯算法，高斯认为有 76 种方案。1854年在柏林的象棋杂志上不同的作者发表了 40 种不同的解，后来有人用图论的方法解出 92 种结果
 
 ``` javascript
@@ -246,7 +248,7 @@ function printQ(queens){ //   打印结果
 }
 let count = 0;
 function find_queen(row, queens) { // 递归放置皇后
-    if (row === 8) {
+    if (row === 8) { // 棋盘放满了，记录结果
         count++;
         console.log('Eight Queens Solve ' +count)
         printQ(queens);
@@ -261,4 +263,55 @@ function find_queen(row, queens) { // 递归放置皇后
     }
 }
 find_queen(0, []);
+```
+
+## 爬楼梯
+假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+
+每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+
+``` JavaScript
+const cache = {};
+const climbStairs = (n) => {
+  if (n === 1) {
+    return 1;
+  }
+  if (n === 2) {
+    return 2;
+  }
+  if (n === 3) {
+    return 3;
+  }
+  if (cache[n]) {
+    return cache[n];
+  }
+  const a = climbStairs(n - 1)
+  const b = climbStairs(n - 2);
+  cache[n] = a + b;
+  return a + b;
+}
+console.log( climbStairs(46))
+```
+
+## 移动零
+使用双指针，j指针填充的位置，遇到0停下，然后填充i指针
+
+``` javascript
+const moveZeroes = (nums) => {
+    //第一次遍历的时候，j指针记录非0的个数，只要是非0的统统都赋给nums[j]
+    let j = 0;
+    for(let i=0;i<nums.length;++i) {
+        if(nums[i]!=0) { // 和上一个对调
+            nums[j++] = nums[i];
+            console.log(nums.join(' '))
+        }
+    }
+    //非0元素统计完了，剩下的都是0了
+    //所以第二次遍历把末尾的元素都赋为0即可
+    for(let i=j;i<nums.length;++i) {
+        nums[i] = 0;
+    }
+    return nums;
+}
+console.log(moveZeroes([0,1,0,3,12])) // [1, 3, 12, 0, 0]
 ```
