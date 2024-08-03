@@ -1,7 +1,7 @@
 ---
 title: 前端安全——XSS攻击
-date: {{ date }}
-updated: {{ date }}
+date: 2021-05-01 10:01:20
+updated: 2021-05-01 10:01:20
 tags:
 categories:
 ---

@@ -1,7 +1,7 @@
 ---
 title: 静态文件缓存方案
-date: {{ date }}
-updated: {{ date }}
+date: 2020-11-08 13:07:14
+updated: 2020-11-08 13:07:14
 tags:
 categories:
 ---

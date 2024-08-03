@@ -1,7 +1,7 @@
 ---
 title: javascript简单教程
-date: {{ date }}
-updated: {{ date }}
+date: 2019-02-19 13:27:35
+updated: 2019-02-19 13:27:35
 tags:
 categories:
 ---

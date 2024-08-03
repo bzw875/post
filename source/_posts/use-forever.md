@@ -1,7 +1,7 @@
 ---
 title: 使用forever来持久运行node.js应用
-date: {{ date }}
-updated: {{ date }}
+date: 2022-03-30 12:36:12
+updated: 2022-03-30 12:36:12
 tags:
 categories:
 ---

@@ -1,12 +1,14 @@
 ---
 title: 常见算法
-date: {{ date }}
-updated: {{ date }}
+date: 2024-05-17 12:21:30
+updated: 2024-05-30 10:07:22
 tags:
 categories:
 ---
 
 ## 斐波那次数列
+斐波那契数列是指这样一个数列：1，1，2，3，5，8，13，21，34，55，89……这个数列从第3项开始 ，每一项都等于前两项之和。
+
 ``` javascript
 // 节省内存空间，没有重复计算
 function fibonacci(n){
@@ -28,6 +30,8 @@ console.log(fibonacci(9))
 
 
 ## 快速排序
+采用“分治”的思想，对于一组数据，选择一个基准元素（base），通常选择第一个或最后一个元素，通过第一轮扫描，比base小的元素都在base左边，比base大的元素都在base右边，再有同样的方法递归排序这两部分，直到序列中所有数据均有序为止。
+
 
 ``` javascript
 function quickSort(arr) {

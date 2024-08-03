@@ -1,7 +1,7 @@
 ---
 title: WebSocket协议介绍
-date: {{ date }}
-updated: {{ date }}
+date: 2020-08-27 14:45:03
+updated: 2020-08-27 14:45:03
 tags:
 categories:
 ---

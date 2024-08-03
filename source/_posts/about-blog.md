@@ -1,7 +1,7 @@
 ---
 title: 关于这个博客是怎么建的
-date: {{ date }}
-updated: {{ date }}
+date: 2019-01-15 15:22:45
+updated: 2019-01-15 15:22:45
 tags:
 categories:
 ---

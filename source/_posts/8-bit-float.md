@@ -1,7 +1,7 @@
 ---
 title: 8位浮点数所有值
-date: {{ date }}
-updated: {{ date }}
+date: 2022-06-14 11:34:22
+updated: 2022-06-14 11:34:22
 tags:
 categories:
 ---

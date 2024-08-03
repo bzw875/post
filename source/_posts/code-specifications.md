@@ -1,7 +1,7 @@
 ---
 title: 前端代码规范和最佳实践
-date: {{ date }}
-updated: {{ date }}
+date: 2020-05-04 16:43:01
+updated: 2020-05-04 16:43:01
 tags:
 categories:
 ---

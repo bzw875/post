@@ -1,7 +1,7 @@
 ---
 title: 深入理解计算机系统（csapp）作业解答
-date: {{ date }}
-updated: {{ date }}
+date: 2023-12-30 10:55:23
+updated: 2023-12-30 10:55:23
 tags:
 categories:
 ---

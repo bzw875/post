@@ -1,7 +1,7 @@
 ---
 title: CSS简单教程
-date: {{ date }}
-updated: {{ date }}
+date: 2019-04-21 14:18:47
+updated: 2019-04-21 14:18:47
 tags:
 categories:
 ---

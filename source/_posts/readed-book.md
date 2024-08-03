@@ -1,7 +1,7 @@
 ---
 title: 读过的书
-date: {{ date }}
-updated: {{ date }}
+date: 2019-11-25 16:02:06
+updated: 2019-11-25 16:02:06
 tags:
 categories:
 ---

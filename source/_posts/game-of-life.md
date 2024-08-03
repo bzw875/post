@@ -1,7 +1,7 @@
 ---
 title: JavaScript实现康威生命游戏
-date: {{ date }}
-updated: {{ date }}
+date: 2022-09-06 15:39:51
+updated: 2022-09-06 15:39:51
 tags:
 categories:
 ---

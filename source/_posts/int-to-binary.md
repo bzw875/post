@@ -1,7 +1,7 @@
 ---
 title: js实现整数转二进制原码、补码
-date: {{ date }}
-updated: {{ date }}
+date: 2021-07-12 09:44:19
+updated: 2021-07-12 09:44:19
 tags:
 categories:
 ---

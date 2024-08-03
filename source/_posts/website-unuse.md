@@ -1,7 +1,7 @@
 ---
 title: 网站打不开的问题排查经验
-date: {{ date }}
-updated: {{ date }}
+date: 2023-08-18 11:00:48
+updated: 2023-08-18 11:00:48
 tags:
 categories:
 ---
