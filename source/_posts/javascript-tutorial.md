@@ -2,7 +2,7 @@
 title: javascript简单教程
 date: 2019-02-19 13:27:35
 updated: 2019-02-19 13:27:35
-tags:
+tags: JavaScript
 categories:
 ---
 

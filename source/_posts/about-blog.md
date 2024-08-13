@@ -2,7 +2,7 @@
 title: 关于这个博客是怎么建的
 date: 2019-01-15 15:22:45
 updated: 2019-01-15 15:22:45
-tags:
+tags: 阅读
 categories:
 ---
 我是初学node.js，晚上搜索到这教程[https://github.com/nswbmw/N-blog](https://github.com/nswbmw/N-blog)，然后就跟着一边敲键盘一边学，学完教程就打算把这个改成自己的博客，当然我是有看过node.js的书籍了《深入浅出node.js》《node.js实践》）。
