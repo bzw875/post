@@ -319,3 +319,41 @@ const moveZeroes = (nums) => {
 }
 console.log(moveZeroes([0,1,0,3,12])) // [1, 3, 12, 0, 0]
 ```
+
+### 无重复字符的最长子串
+给定一个字符串 str ，请你找出其中不含有重复字符的 最长子串的长度。
+这个的解法是移动窗口
+``` JavaScript
+const maxUniqoStrLength = (str) => {
+    const len = str.length;
+    let charMap = {};
+    const result = [0];
+    if (len < 2) {
+        return len;
+    }
+    for (let i = 0; i < len; i++ ) {
+        charMap = {
+            [str[i]]: 1
+        };
+        for (let j = i + 1; j < len; j++) {
+            const char = str[j];
+            if (charMap[char]) {
+                result.push(j-i);
+                charMap = {};
+                break;
+            } else {
+                charMap[char] = 1;
+            }
+            if (j === len - 1) {
+                result.push(len - i)
+            }
+        }
+    }
+    return Math.max.apply(null, result);
+};
+console.log(maxUniqoStrLength("abcabcbb")) // 3
+console.log(maxUniqoStrLength("pwwkew")) // 3
+console.log(maxUniqoStrLength("ab")) // 2
+console.log(maxUniqoStrLength("a")) // 1
+console.log(maxUniqoStrLength("")) // 0
+```
