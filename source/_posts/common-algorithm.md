@@ -229,7 +229,7 @@ const addStr = (num1, num2) => {
 console.log(addStr('123454321', '456'))
 ```
 
-## 八皇后问题
+## leetcode 51. 八皇后问题
 
 八皇后问题，是一个古老而著名的问题，是 回溯算法 的典型案例。
 
@@ -269,7 +269,7 @@ function find_queen(row, queens) { // 递归放置皇后
 find_queen(0, []);
 ```
 
-## 爬楼梯
+## leetcode 70.爬楼梯
 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
 
 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
@@ -297,8 +297,10 @@ const climbStairs = (n) => {
 console.log( climbStairs(46))
 ```
 
-## 移动零
+## leetcode 283. 移动零
 使用双指针，j指针填充的位置，遇到0停下，然后填充i指针
+输入: nums = [0,1,0,3,12]
+输出: [1,3,12,0,0]
 
 ``` javascript
 const moveZeroes = (nums) => {
@@ -319,6 +321,44 @@ const moveZeroes = (nums) => {
 }
 console.log(moveZeroes([0,1,0,3,12])) // [1, 3, 12, 0, 0]
 ```
+
+## 旋转矩阵
+[leetcode 01.07](https://leetcode.cn/problems/rotate-matrix-lcci/description/)
+``` JavaScript
+const rotate = (matrix) => {
+    // 1. 上下翻转。
+    // 2. 主对角线翻转。
+    const len = matrix.length;
+    for (let i = 0; i < (len/2); i++) { // 上下翻转
+        for (let j = 0; j < len; j++) {
+            const tmp = matrix[i][j];
+            const mirr_row = len - i - 1; // 水平翻转的行
+            matrix[i][j] = matrix[mirr_row][j];
+            matrix[mirr_row][j] = tmp;
+        }
+    }
+    let diagonal = 0;
+    for (let i = 0; i < len; i++) { // 主对角线翻转
+        for (let j = diagonal; j < len; j++) {
+            const tmp = matrix[i][j];
+            const mirr_row = j; // 对角线的行
+            const mirr_column = i; // 对角线的列
+            matrix[i][j] = matrix[mirr_row][mirr_column];
+            matrix[mirr_row][mirr_column] = tmp;
+        }
+        diagonal++; // 对角线之下的不用翻转
+    }
+    return matrix;
+};
+const matrix = [
+    [1,  2,  3,  4],
+    [5,  6,  7,  8],
+    [9,  10, 11, 12],
+    [13, 14, 15, 16],
+]
+console.log(rotate(matrix))
+```
+
 
 ### 无重复字符的最长子串
 给定一个字符串 str ，请你找出其中不含有重复字符的 最长子串的长度。
